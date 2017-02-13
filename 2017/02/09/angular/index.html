@@ -90,7 +90,7 @@
 <meta property="og:url" content="https://zhongning7924.github.io/2017/02/09/angular/index.html">
 <meta property="og:site_name" content="工作笔记">
 <meta property="og:description" content="业务场景：前端页面发送请求，在请求相应之前我们想要阻止用户进行其他操作，这时候需要我们对响应前端的页面状态做一些设置，比如接口返回数据之前给定一个loading图片，并且背景加一个模态框，那么这个操作是通过什么来判断的呢？在用angular框架为我们提供了Interceptors（拦截器），话不多说先看代码示例。代码示例config(function($stateProvider, $urlRou">
-<meta property="og:updated_time" content="2017-02-09T12:33:46.000Z">
+<meta property="og:updated_time" content="2017-02-11T05:11:05.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="angularjs Interceptors的应用">
 <meta name="twitter:description" content="业务场景：前端页面发送请求，在请求相应之前我们想要阻止用户进行其他操作，这时候需要我们对响应前端的页面状态做一些设置，比如接口返回数据之前给定一个loading图片，并且背景加一个模态框，那么这个操作是通过什么来判断的呢？在用angular框架为我们提供了Interceptors（拦截器），话不多说先看代码示例。代码示例config(function($stateProvider, $urlRou">
@@ -315,7 +315,7 @@
       
 
       
-        <h2 id="业务场景：前端页面发送请求，在请求相应之前我们想要阻止用户进行其他操作，这时候需要我们对响应前端的页面状态做一些设置，比如接口返回数据之前给定一个loading图片，并且背景加一个模态框，那么这个操作是通过什么来判断的呢？在用angular框架为我们提供了Interceptors（拦截器），话不多说先看代码示例。"><a href="#业务场景：前端页面发送请求，在请求相应之前我们想要阻止用户进行其他操作，这时候需要我们对响应前端的页面状态做一些设置，比如接口返回数据之前给定一个loading图片，并且背景加一个模态框，那么这个操作是通过什么来判断的呢？在用angular框架为我们提供了Interceptors（拦截器），话不多说先看代码示例。" class="headerlink" title="业务场景：前端页面发送请求，在请求相应之前我们想要阻止用户进行其他操作，这时候需要我们对响应前端的页面状态做一些设置，比如接口返回数据之前给定一个loading图片，并且背景加一个模态框，那么这个操作是通过什么来判断的呢？在用angular框架为我们提供了Interceptors（拦截器），话不多说先看代码示例。"></a>业务场景：前端页面发送请求，在请求相应之前我们想要阻止用户进行其他操作，这时候需要我们对响应前端的页面状态做一些设置，比如接口返回数据之前给定一个loading图片，并且背景加一个模态框，那么这个操作是通过什么来判断的呢？在用angular框架为我们提供了Interceptors（拦截器），话不多说先看代码示例。</h2><h2 id="代码示例"><a href="#代码示例" class="headerlink" title="代码示例"></a>代码示例</h2><p>config(function($stateProvider, $urlRouterProvider, $httpProvider) {</p>
+        <h3 id="业务场景：前端页面发送请求，在请求相应之前我们想要阻止用户进行其他操作，这时候需要我们对响应前端的页面状态做一些设置，比如接口返回数据之前给定一个loading图片，并且背景加一个模态框，那么这个操作是通过什么来判断的呢？在用angular框架为我们提供了Interceptors（拦截器），话不多说先看代码示例。"><a href="#业务场景：前端页面发送请求，在请求相应之前我们想要阻止用户进行其他操作，这时候需要我们对响应前端的页面状态做一些设置，比如接口返回数据之前给定一个loading图片，并且背景加一个模态框，那么这个操作是通过什么来判断的呢？在用angular框架为我们提供了Interceptors（拦截器），话不多说先看代码示例。" class="headerlink" title="业务场景：前端页面发送请求，在请求相应之前我们想要阻止用户进行其他操作，这时候需要我们对响应前端的页面状态做一些设置，比如接口返回数据之前给定一个loading图片，并且背景加一个模态框，那么这个操作是通过什么来判断的呢？在用angular框架为我们提供了Interceptors（拦截器），话不多说先看代码示例。"></a>业务场景：前端页面发送请求，在请求相应之前我们想要阻止用户进行其他操作，这时候需要我们对响应前端的页面状态做一些设置，比如接口返回数据之前给定一个loading图片，并且背景加一个模态框，那么这个操作是通过什么来判断的呢？在用angular框架为我们提供了Interceptors（拦截器），话不多说先看代码示例。</h3><h3 id="代码示例"><a href="#代码示例" class="headerlink" title="代码示例"></a>代码示例</h3><p>config(function($stateProvider, $urlRouterProvider, $httpProvider) {</p>
 <pre><code>        // console.log($httpProvider);
 $httpProvider.interceptors.push([&apos;$q&apos;, &apos;$rootScope&apos;, &apos;$window&apos;,  function($q, $rootScope, $window) {
       return {
@@ -352,10 +352,11 @@ $httpProvider.interceptors.push([&apos;$q&apos;, &apos;$rootScope&apos;, &apos;$
       };
   }
 ]);
-</code></pre><h2 id="代码说明"><a href="#代码说明" class="headerlink" title="代码说明"></a>代码说明</h2><p>  通过实现 request 方法拦截request: 该方法会在$http发送请求到后台之前执行，因此你可以修改配置或做其他的操作。该方法接收请求配置对象(request configuration object)作为参数，然后必须返回配置对象或者promise 。如果返回无效的配置对象或者 promise 则会被拒绝，导致$http 调用失败。</p>
+</code></pre><h3 id="代码说明"><a href="#代码说明" class="headerlink" title="代码说明"></a>代码说明</h3><p>  通过实现 request 方法拦截request: 该方法会在$http发送请求到后台之前执行，因此你可以修改配置或做其他的操作。该方法接收请求配置对象(request configuration object)作为参数，然后必须返回配置对象或者promise 。如果返回无效的配置对象或者 promise 则会被拒绝，导致$http 调用失败。</p>
 <p>通过实现response方法拦截response: 该方法会在$http接收到从后台过来的响应之后执行，因此你可以修改响应或做其他操作。该方法接收响应对象(response object)作为参数，然后必须返回响应对象或者promise。响应对象包括了请求配置(request configuration)，头(headers)，状态(status)和从后台过来的数据(data)。如果返回无效的响应对象或者 promise 会被拒绝，导致$http调用失败。</p>
 <p>通过实现requestError方法拦截请求异常: 有时一个请求发送失败或者被拦截器拒绝了。requestError拦截器会捕获那些被上一个请求拦截器中断的请求。它可以用来恢复请求或者有时可以用来撤销请求之前所做的配置，比如关闭遮罩层，显示进度条，激活按钮和输入框之类的。</p>
 <p>通过实现responseError方法拦截响应异常: 有时候我们后台调用失败了。也有可能它被一个请求拦截器拒绝了，或者被上一个响应拦截器中断了。在这种情况下，响应异常拦截器可以帮助我们恢复后台调用。</p>
+<h3 id="拦截器还可以做什么"><a href="#拦截器还可以做什么" class="headerlink" title="拦截器还可以做什么"></a>拦截器还可以做什么</h3><p>   1、利用拦截器可以做路由的统一跳转处理。<br>   2、可以计算接口请求到响应的整个过程的时间。<br>   3、发送请求前主语session信息，用于做用户登录校验。</p>
 
       
     </div>
@@ -483,7 +484,7 @@ $httpProvider.interceptors.push([&apos;$q&apos;, &apos;$rootScope&apos;, &apos;$
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#业务场景：前端页面发送请求，在请求相应之前我们想要阻止用户进行其他操作，这时候需要我们对响应前端的页面状态做一些设置，比如接口返回数据之前给定一个loading图片，并且背景加一个模态框，那么这个操作是通过什么来判断的呢？在用angular框架为我们提供了Interceptors（拦截器），话不多说先看代码示例。"><span class="nav-number">1.</span> <span class="nav-text">业务场景：前端页面发送请求，在请求相应之前我们想要阻止用户进行其他操作，这时候需要我们对响应前端的页面状态做一些设置，比如接口返回数据之前给定一个loading图片，并且背景加一个模态框，那么这个操作是通过什么来判断的呢？在用angular框架为我们提供了Interceptors（拦截器），话不多说先看代码示例。</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#代码示例"><span class="nav-number">2.</span> <span class="nav-text">代码示例</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#代码说明"><span class="nav-number">3.</span> <span class="nav-text">代码说明</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#业务场景：前端页面发送请求，在请求相应之前我们想要阻止用户进行其他操作，这时候需要我们对响应前端的页面状态做一些设置，比如接口返回数据之前给定一个loading图片，并且背景加一个模态框，那么这个操作是通过什么来判断的呢？在用angular框架为我们提供了Interceptors（拦截器），话不多说先看代码示例。"><span class="nav-number">1.</span> <span class="nav-text">业务场景：前端页面发送请求，在请求相应之前我们想要阻止用户进行其他操作，这时候需要我们对响应前端的页面状态做一些设置，比如接口返回数据之前给定一个loading图片，并且背景加一个模态框，那么这个操作是通过什么来判断的呢？在用angular框架为我们提供了Interceptors（拦截器），话不多说先看代码示例。</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#代码示例"><span class="nav-number">2.</span> <span class="nav-text">代码示例</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#代码说明"><span class="nav-number">3.</span> <span class="nav-text">代码说明</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#拦截器还可以做什么"><span class="nav-number">4.</span> <span class="nav-text">拦截器还可以做什么</span></a></li></ol></div>
             
 
           </div>
