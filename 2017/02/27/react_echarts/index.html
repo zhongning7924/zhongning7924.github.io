@@ -84,16 +84,19 @@
 
 
 
-<meta name="description" content="业务场景：前端页面发送请求，在请求相应之前我们想要阻止用户进行其他操作，这时候需要我们对响应前端的页面状态做一些设置，比如接口返回数据之前给定一个loading图片，并且背景加一个模态框，那么这个操作是通过什么来判断的呢？在用angular框架为我们提供了Interceptors（拦截器），话不多说先看代码示例。代码示例config(function($stateProvider, $urlRou">
+<meta name="description" content="业务背景：由于公司业务的发展，需要对公司应用的app软件，做一些埋点数据分类统计，以便可以直观看到该应用的多种指标变化趋势，如用户增长-时间趋势，活跃度，软件的启动次数，软件的版本的用户使用情况等多种指标数据图标展示。
+技术选型   目前比较流行的可视化的前端组件有echarts、highcharts、d3.js。   echarts为百度公司开发，有比较友好的开发文档，配置项比较简单，结合目前的">
 <meta property="og:type" content="article">
-<meta property="og:title" content="angularjs Interceptors的应用">
-<meta property="og:url" content="https://zhongning7924.github.io/2017/02/09/angular/index.html">
+<meta property="og:title" content="前端数据可视化总结">
+<meta property="og:url" content="https://zhongning7924.github.io/2017/02/27/react_echarts/index.html">
 <meta property="og:site_name" content="工作笔记">
-<meta property="og:description" content="业务场景：前端页面发送请求，在请求相应之前我们想要阻止用户进行其他操作，这时候需要我们对响应前端的页面状态做一些设置，比如接口返回数据之前给定一个loading图片，并且背景加一个模态框，那么这个操作是通过什么来判断的呢？在用angular框架为我们提供了Interceptors（拦截器），话不多说先看代码示例。代码示例config(function($stateProvider, $urlRou">
-<meta property="og:updated_time" content="2017-02-27T12:45:32.000Z">
+<meta property="og:description" content="业务背景：由于公司业务的发展，需要对公司应用的app软件，做一些埋点数据分类统计，以便可以直观看到该应用的多种指标变化趋势，如用户增长-时间趋势，活跃度，软件的启动次数，软件的版本的用户使用情况等多种指标数据图标展示。
+技术选型   目前比较流行的可视化的前端组件有echarts、highcharts、d3.js。   echarts为百度公司开发，有比较友好的开发文档，配置项比较简单，结合目前的">
+<meta property="og:updated_time" content="2017-02-27T14:04:35.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="angularjs Interceptors的应用">
-<meta name="twitter:description" content="业务场景：前端页面发送请求，在请求相应之前我们想要阻止用户进行其他操作，这时候需要我们对响应前端的页面状态做一些设置，比如接口返回数据之前给定一个loading图片，并且背景加一个模态框，那么这个操作是通过什么来判断的呢？在用angular框架为我们提供了Interceptors（拦截器），话不多说先看代码示例。代码示例config(function($stateProvider, $urlRou">
+<meta name="twitter:title" content="前端数据可视化总结">
+<meta name="twitter:description" content="业务背景：由于公司业务的发展，需要对公司应用的app软件，做一些埋点数据分类统计，以便可以直观看到该应用的多种指标变化趋势，如用户增长-时间趋势，活跃度，软件的启动次数，软件的版本的用户使用情况等多种指标数据图标展示。
+技术选型   目前比较流行的可视化的前端组件有echarts、highcharts、d3.js。   echarts为百度公司开发，有比较友好的开发文档，配置项比较简单，结合目前的">
 
 
 
@@ -121,13 +124,13 @@
 
 
 
-  <link rel="canonical" href="https://zhongning7924.github.io/2017/02/09/angular/"/>
+  <link rel="canonical" href="https://zhongning7924.github.io/2017/02/27/react_echarts/"/>
 
 
 
 
 
-  <title> angularjs Interceptors的应用 | 工作笔记 </title>
+  <title> 前端数据可视化总结 | 工作笔记 </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
@@ -240,7 +243,7 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-  <link itemprop="mainEntityOfPage" href="https://zhongning7924.github.io/2017/02/09/angular/">
+  <link itemprop="mainEntityOfPage" href="https://zhongning7924.github.io/2017/02/27/react_echarts/">
 
   <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
     <meta itemprop="name" content="小游客">
@@ -264,7 +267,7 @@
             
             
               
-                angularjs Interceptors的应用
+                前端数据可视化总结
               
             
           </h1>
@@ -279,8 +282,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-02-09T20:29:49+08:00">
-                2017-02-09
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-02-27T20:51:02+08:00">
+                2017-02-27
               </time>
             
 
@@ -315,48 +318,21 @@
       
 
       
-        <h3 id="业务场景：前端页面发送请求，在请求相应之前我们想要阻止用户进行其他操作，这时候需要我们对响应前端的页面状态做一些设置，比如接口返回数据之前给定一个loading图片，并且背景加一个模态框，那么这个操作是通过什么来判断的呢？在用angular框架为我们提供了Interceptors（拦截器），话不多说先看代码示例。"><a href="#业务场景：前端页面发送请求，在请求相应之前我们想要阻止用户进行其他操作，这时候需要我们对响应前端的页面状态做一些设置，比如接口返回数据之前给定一个loading图片，并且背景加一个模态框，那么这个操作是通过什么来判断的呢？在用angular框架为我们提供了Interceptors（拦截器），话不多说先看代码示例。" class="headerlink" title="业务场景：前端页面发送请求，在请求相应之前我们想要阻止用户进行其他操作，这时候需要我们对响应前端的页面状态做一些设置，比如接口返回数据之前给定一个loading图片，并且背景加一个模态框，那么这个操作是通过什么来判断的呢？在用angular框架为我们提供了Interceptors（拦截器），话不多说先看代码示例。"></a>业务场景：前端页面发送请求，在请求相应之前我们想要阻止用户进行其他操作，这时候需要我们对响应前端的页面状态做一些设置，比如接口返回数据之前给定一个loading图片，并且背景加一个模态框，那么这个操作是通过什么来判断的呢？在用angular框架为我们提供了Interceptors（拦截器），话不多说先看代码示例。</h3><h3 id="代码示例"><a href="#代码示例" class="headerlink" title="代码示例"></a>代码示例</h3><p>config(function($stateProvider, $urlRouterProvider, $httpProvider) {</p>
-<pre><code>        // console.log($httpProvider);
-$httpProvider.interceptors.push([&apos;$q&apos;, &apos;$rootScope&apos;, &apos;$window&apos;,  function($q, $rootScope, $window) {
-      return {
-        // optional method
-        &apos;request&apos;: function(config) {
-          // do something on success
-          if(config.method == &apos;POST&apos;){
-              $rootScope.isLoading = true;
-          }
-          return config || $q.when(config);
-        },
-        // optional method
-       &apos;requestError&apos;: function(rejection) {
-          // do something on error
-          $rootScope.isLoading = false;
-          return $q.reject(rejection);
-        },
-        // optional method
-        &apos;response&apos;: function(response) {
-            // do something on success
-            if (response.config.method == &apos;POST&apos;){
-                $rootScope.isLoading = false;
-            }
-
-            return response || $q.when(response);
-        },
-        // optional method
-       &apos;responseError&apos;: function(rejection) {
-          // do something on error
-          $rootScope.isLoading = false;
-          $window.alert(&apos;服务器繁忙,请稍后重试!&apos;);
-          return $q.reject(rejection);
-        }
-      };
-  }
-]);
-</code></pre><h3 id="代码说明"><a href="#代码说明" class="headerlink" title="代码说明"></a>代码说明</h3><p>  通过实现 request 方法拦截request: 该方法会在$http发送请求到后台之前执行，因此你可以修改配置或做其他的操作。该方法接收请求配置对象(request configuration object)作为参数，然后必须返回配置对象或者promise 。如果返回无效的配置对象或者 promise 则会被拒绝，导致$http 调用失败。</p>
-<p>通过实现response方法拦截response: 该方法会在$http接收到从后台过来的响应之后执行，因此你可以修改响应或做其他操作。该方法接收响应对象(response object)作为参数，然后必须返回响应对象或者promise。响应对象包括了请求配置(request configuration)，头(headers)，状态(status)和从后台过来的数据(data)。如果返回无效的响应对象或者 promise 会被拒绝，导致$http调用失败。</p>
-<p>通过实现requestError方法拦截请求异常: 有时一个请求发送失败或者被拦截器拒绝了。requestError拦截器会捕获那些被上一个请求拦截器中断的请求。它可以用来恢复请求或者有时可以用来撤销请求之前所做的配置，比如关闭遮罩层，显示进度条，激活按钮和输入框之类的。</p>
-<p>通过实现responseError方法拦截响应异常: 有时候我们后台调用失败了。也有可能它被一个请求拦截器拒绝了，或者被上一个响应拦截器中断了。在这种情况下，响应异常拦截器可以帮助我们恢复后台调用。</p>
-<h3 id="拦截器还可以做什么"><a href="#拦截器还可以做什么" class="headerlink" title="拦截器还可以做什么"></a>拦截器还可以做什么</h3><p>   1、利用拦截器可以做路由的统一跳转处理。<br>   2、可以计算接口请求到响应的整个过程的时间。<br>   3、发送请求前主语session信息，用于做用户登录校验。</p>
+        <h3 id="业务背景：由于公司业务的发展，需要对公司应用的app软件，做一些埋点数据分类统计，"><a href="#业务背景：由于公司业务的发展，需要对公司应用的app软件，做一些埋点数据分类统计，" class="headerlink" title="业务背景：由于公司业务的发展，需要对公司应用的app软件，做一些埋点数据分类统计，"></a>业务背景：由于公司业务的发展，需要对公司应用的app软件，做一些埋点数据分类统计，</h3><p>以便可以直观看到该应用的多种指标变化趋势，如用户增长-时间趋势，活跃度，软件的启动次数，<br>软件的版本的用户使用情况等多种指标数据图标展示。</p>
+<h3 id="技术选型"><a href="#技术选型" class="headerlink" title="技术选型"></a>技术选型</h3><p>   目前比较流行的可视化的前端组件有echarts、highcharts、d3.js。<br>   echarts为百度公司开发，有比较友好的开发文档，配置项比较简单，结合目前的的产品需求都能够实现，<br>   因此采用了echarts为展示组件,（目前产品主要用到的图标主要为：地图，折线图，饼图，柱状图）</p>
+<h3 id="可视化项目总结"><a href="#可视化项目总结" class="headerlink" title="可视化项目总结"></a>可视化项目总结</h3><p>1、前端框架选型，数据可视化操作一般共同的特点是，数据的操作比较多，而且公用的查询条件比较多，<br>redux在数据共享方面有独特的优势，本人对react的使用也比较熟练，因此采用了react+redux+bable<br>全家桶作为该应用前端技术架构<br>2、echarts 的options数据配置项目很多类似的东西，因此提取公共函数，写成公用的东西可以使代码更简洁<br>例如：x轴坐标展示的展示个数，折线图、柱状图等基本的数据结构等写到一个公共文件里面实现复用。需要注意的是<br>当使用同一个对象的数据结构时候，不要进行对象简单赋值操作，要对对象进行深度克隆后赋值，避免2个图标的Option<br>引用同一个对象<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="comment">//lodash进行对象深度克隆，引入lodash主要是方便复杂的数组操作，过虑等。</span></div><div class="line"><span class="keyword">let</span> _categorydailylineOption =  __.cloneDeep(ChartOption.lineoption);</div></pre></td></tr></table></figure></p>
+<p>3、展示数据的标题等通常是需要变化的，因此在重新赋值的时候需要清除下echarts的对象的实例，重新传入<br>绘图的配置数据<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">  clearEcharts(name)&#123;</div><div class="line">        this.refs[name] &amp;&amp; this.refs[name].getEchartsInstance().clear(); //获取echarts的实例对象</div><div class="line">    &#125;,</div><div class="line"> ```   </div><div class="line">![](/images/echats1.png)</div><div class="line">4、对于饼图，柱状图等颜色的配置，echarts默认显示10种显色，多了之后重复显示，因此可以定义多个颜色的数组</div><div class="line">![](/images/echats2.png)</div><div class="line">代码示例</div></pre></td></tr></table></figure></p>
+<pre><code>const colorList = [&apos;#c0392b&apos;,&apos;#d35400&apos;,&apos;#e67e22&apos;,&apos;#f39c12&apos;,&apos;#f1c40f&apos;,&apos;#2ecc71&apos;,&apos;#27ae60&apos;,&apos;#1abc9c&apos;,&apos;#16a085&apos;,
+</code></pre><p>  ‘#3498db’,’#2980b9’,’#9b59b6’,’#8e44ad’,’#34495e’,’#2c3e50’,’#7f8c8d’,’#95a5a6’,’#bdc3c7’,’#ecf0f1’]</p>
+<p>//饼图基本数据结构<br>const  pieoption = {<br>    title : {<br>        text: ‘’,<br>        subtext: ‘’,<br>        x:’left 10px’<br>    },<br>    tooltip : {<br>        trigger: ‘item’,<br>        formatter: “{a} <br>{b} : {c} ({d}%)”<br>    },<br>    series : [<br>        {<br>            name: ‘’,<br>            type: ‘pie’,<br>            radius : ‘80%’,<br>            center: [‘50%’, ‘50%’],<br>            data:[</p>
+<pre><code>        ],
+         itemStyle : {normal : {color: function(params) {
+                    // build a color map as your need.
+                    return colorList[params.dataIndex]
+                },}} 
+    }
+]
+</code></pre><p>};<br>```</p>
 
       
     </div>
@@ -383,15 +359,15 @@ $httpProvider.interceptors.push([&apos;$q&apos;, &apos;$rootScope&apos;, &apos;$
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
+              <a href="/2017/02/27/react_tree/" rel="next" title="多级菜单树的前端展示处理">
+                <i class="fa fa-chevron-left"></i> 多级菜单树的前端展示处理
+              </a>
+            
           </div>
 
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2017/02/27/react_tree/" rel="prev" title="多级菜单树的前端展示处理">
-                多级菜单树的前端展示处理 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -500,7 +476,7 @@ $httpProvider.interceptors.push([&apos;$q&apos;, &apos;$rootScope&apos;, &apos;$
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#业务场景：前端页面发送请求，在请求相应之前我们想要阻止用户进行其他操作，这时候需要我们对响应前端的页面状态做一些设置，比如接口返回数据之前给定一个loading图片，并且背景加一个模态框，那么这个操作是通过什么来判断的呢？在用angular框架为我们提供了Interceptors（拦截器），话不多说先看代码示例。"><span class="nav-number">1.</span> <span class="nav-text">业务场景：前端页面发送请求，在请求相应之前我们想要阻止用户进行其他操作，这时候需要我们对响应前端的页面状态做一些设置，比如接口返回数据之前给定一个loading图片，并且背景加一个模态框，那么这个操作是通过什么来判断的呢？在用angular框架为我们提供了Interceptors（拦截器），话不多说先看代码示例。</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#代码示例"><span class="nav-number">2.</span> <span class="nav-text">代码示例</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#代码说明"><span class="nav-number">3.</span> <span class="nav-text">代码说明</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#拦截器还可以做什么"><span class="nav-number">4.</span> <span class="nav-text">拦截器还可以做什么</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#业务背景：由于公司业务的发展，需要对公司应用的app软件，做一些埋点数据分类统计，"><span class="nav-number">1.</span> <span class="nav-text">业务背景：由于公司业务的发展，需要对公司应用的app软件，做一些埋点数据分类统计，</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#技术选型"><span class="nav-number">2.</span> <span class="nav-text">技术选型</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#可视化项目总结"><span class="nav-number">3.</span> <span class="nav-text">可视化项目总结</span></a></li></ol></div>
             
 
           </div>
